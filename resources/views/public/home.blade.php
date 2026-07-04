@@ -150,12 +150,33 @@
   </div>
 
   <!-- Menu Navigasi -->
-  <div class="hidden md:flex gap-8 items-center">
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/beranda">Beranda</a>
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/struktur pengurus">Struktur Pengurus</a>
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/arsip administrasi">Arsip Administrasi</a>
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/calender">Calender</a>
-  </div>
+<div class="hidden md:flex gap-8 items-center">
+
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+       href="/beranda">
+        Beranda
+    </a>
+
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+       href="/struktur pengurus">
+        Struktur Pengurus
+    </a>
+
+    <!-- Arsip -->
+    <a href="#"
+       onclick="showLoginModal(); return false;"
+       class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200">
+        Arsip Administrasi
+    </a>
+
+    <!-- Calendar -->
+    <a href="#"
+       onclick="showLoginModal(); return false;"
+       class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200">
+        Calendar
+    </a>
+
+</div>
 
   <!-- Tombol Login -->
   <button id="loginBtn" 
@@ -637,28 +658,13 @@
 </footer>
 
 <!-- ==================== LOGIN MODAL ==================== -->
-<div id="loginModal" 
-     onclick="if (event.target.id === 'loginModal') hideLoginModal()"
-     class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-[999] p-4">
-
-    <div onclick="event.stopImmediatePropagation()" 
-         class="bg-surface w-full max-w-md rounded-2xl shadow-2xl border border-outline-variant overflow-hidden">
-        
-        <!-- Header Modal -->
-        <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant">
-            <div>
-                <h3 class="font-semibold text-xl text-on-surface">Masuk ke akun</h3>
-                <p class="text-xs text-on-surface-variant">Rayon FTKD - Universitas Nusa Putra</p>
-            </div>
-            <button onclick="hideLoginModal()" 
-                    class="w-9 h-9 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-
-        <!-- Form -->
-        <div class="p-6">
+<div id="loginModal" onclick="if (event.target.id === 'loginModal') hideLoginModal()" class="fixed inset-0 hidden items-center justify-center bg-slate-900/70 p-6 z-50">
+    <div class="relative w-full max-w-md rounded-[2rem] bg-white p-6 shadow-2xl">
+        <button type="button" onclick="hideLoginModal()" class="absolute right-4 top-4 text-slate-500 hover:text-slate-900 text-2xl leading-none">×</button>
+        <div class="p-6 pt-10">
             <form id="loginForm">
+                <input type="hidden" id="redirectAfterLogin" value="">
+
                 <!-- Email -->
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Email atau Username</label>
@@ -670,42 +676,40 @@
                     </div>
                 </div>
 
-                <!-- Password -->
-                <div class="mb-5">
-                    <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Kata Sandi</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-4 top-3 text-on-surface-variant">lock</span>
-                        <input type="password" id="password" required 
-                               class="w-full pl-11 pr-11 py-3 border border-outline-variant rounded-xl focus:outline-none focus:border-primary text-sm bg-surface"
-                               placeholder="••••••••••">
-                        <button type="button" onclick="togglePasswordVisibility()" 
-                                class="absolute right-4 top-3 text-on-surface-variant hover:text-primary">
-                            <span id="eyeIcon" class="material-symbols-outlined">visibility</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-between mb-6 text-sm">
-                    <label class="flex items-center gap-x-2 cursor-pointer">
-                        <input type="checkbox" class="accent-primary">
-                        <span class="text-on-surface-variant text-sm">Ingat saya</span>
-                    </label>
-                    <a href="#" class="text-primary hover:underline text-sm">Lupa kata sandi?</a>
-                </div>
-
-                <button type="submit"
-                        class="w-full bg-primary hover:bg-primary/90 transition text-on-primary font-semibold py-3.5 rounded-xl text-sm">
-                    Masuk
+        <!-- Password -->
+        <div class="mb-5">
+            <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Kata Sandi</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-3 text-on-surface-variant">lock</span>
+                <input type="password" id="password" required 
+                       class="w-full pl-11 pr-11 py-3 border border-outline-variant rounded-xl focus:outline-none focus:border-primary text-sm bg-surface"
+                       placeholder="••••••••••">
+                <button type="button" onclick="togglePasswordVisibility()" 
+                        class="absolute right-4 top-3 text-on-surface-variant hover:text-primary">
+                    <span id="eyeIcon" class="material-symbols-outlined">visibility</span>
                 </button>
-            </form>
-
-            <div class="text-center mt-5">
-                <p class="text-sm text-on-surface-variant">
-                    Belum punya akun? 
-                    <a href="#" class="text-primary font-medium hover:underline">Daftar sekarang</a>
-                </p>
             </div>
         </div>
+
+        <div class="flex items-center justify-between mb-6 text-sm">
+            <label class="flex items-center gap-x-2 cursor-pointer">
+                <input type="checkbox" class="accent-primary">
+                <span class="text-on-surface-variant text-sm">Ingat saya</span>
+            </label>
+            <a href="#" class="text-primary hover:underline text-sm">Lupa kata sandi?</a>
+        </div>
+
+        <button type="submit"
+                class="w-full bg-primary hover:bg-primary/90 transition text-on-primary font-semibold py-3.5 rounded-xl text-sm">
+            Masuk
+        </button>
+    </form>
+
+    <div class="text-center mt-5">
+        <p class="text-sm text-on-surface-variant">
+            Belum punya akun? 
+            <a href="#" class="text-primary font-medium hover:underline">Daftar sekarang</a>
+        </p>
     </div>
 </div>
 <!-- ==================== END LOGIN MODAL ==================== -->

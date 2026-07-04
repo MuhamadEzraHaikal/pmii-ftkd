@@ -132,12 +132,33 @@
   </div>
 
   <!-- Menu Navigasi -->
-  <div class="hidden md:flex gap-8 items-center">
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/beranda">Beranda</a>
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/struktur pengurus">Struktur Pengurus</a>
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/arsip administrasi">Arsip Administrasi</a>
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="/calender">Calender</a>
-  </div>
+<div class="hidden md:flex gap-8 items-center">
+
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+       href="/beranda">
+        Beranda
+    </a>
+
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+       href="/struktur pengurus">
+        Struktur Pengurus
+    </a>
+
+    <!-- Arsip -->
+    <a href="#"
+       onclick="showLoginModal(); return false;"
+       class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200">
+        Arsip Administrasi
+    </a>
+
+    <!-- Calendar -->
+    <a href="#"
+       onclick="showLoginModal(); return false;"
+       class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200">
+        Calendar
+    </a>
+
+</div>
 
   <!-- Tombol Login -->
   <button id="loginBtn" 
