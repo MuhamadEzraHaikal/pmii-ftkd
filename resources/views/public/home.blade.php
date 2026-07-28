@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Rayon Fakultas Teknik Komputer dan Desain - Dzikir, Fikir, Amal Sholeh</title>
+<link rel="icon" href="{{ asset('LOGO Rayon FTKD.ico') }}" type="image/x-icon"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -128,123 +129,59 @@
 </head>
 <body class="bg-background text-on-surface">
 
-<!-- TopNavBar -->
-<header id="navbar" 
-        class="fixed top-0 w-full bg-surface z-50 transition-all duration-300">
-
-<nav class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
-  <div class="flex items-center space-x-4 font-sans font-medium">
-    
-    <!-- Logo -->
-    <img 
-      src="logo_rayon.png" 
-      alt="Logo PMII Rayon FTKD" 
-      class="h-12 w-auto object-contain"
-    >
-
-    <div class="flex-1">
-      <h2 class="text-lg">Pergerakan Mahasiswa Islam Indonesia</h2>
-      <p class="text-sm font-light text-gray-500">Rayon Fakultas Teknik Komputer dan Desain</p>
-      <p class="text-sm font-light text-gray-500">Komisariat Universitas Nusa putra</p>
+@if(session('success'))
+<div id="successRegisterModal" class="fixed inset-0 z-[1000] flex items-center justify-center bg-slate-900/70 p-4">
+  <div class="w-full max-w-md rounded-[2rem] bg-white p-8 text-center shadow-2xl">
+    <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-2xl text-green-600">
+      ✓
     </div>
+    <h3 class="text-xl font-semibold text-slate-900">Selamat!</h3>
+    <p class="mt-2 text-sm leading-6 text-slate-600">{{ session('success') }}</p>
+    <button type="button" onclick="document.getElementById('successRegisterModal').classList.add('hidden')" class="mt-6 rounded-full bg-[#00356a] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#002b53]">
+      Lanjutkan
+    </button>
   </div>
-
-  <!-- Menu Navigasi -->
-<div class="hidden md:flex gap-8 items-center">
-
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
-       href="/beranda">
-        Beranda
-    </a>
-
-    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200"
-       href="/struktur pengurus">
-        Struktur Pengurus
-    </a>
-
-    <!-- Arsip -->
-    <a href="#"
-       onclick="showLoginModal(); return false;"
-       class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200">
-        Arsip Administrasi
-    </a>
-
-    <!-- Calendar -->
-    <a href="#"
-       onclick="showLoginModal(); return false;"
-       class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200">
-        Calendar
-    </a>
-
 </div>
+@endif
 
-  <!-- Tombol Login -->
-  <button id="loginBtn" 
-          onclick="showLoginModal()"
-          class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md scale-95 active:opacity-80 transition-all hover:bg-primary/90">
-    Login
-  </button>
-</nav>
-
-</header>
-
-<!-- Script Navbar -->
-<script>
-    const navbar = document.getElementById('navbar');
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            // Saat di-scroll: transparan + garis muncul
-            navbar.classList.remove('bg-surface');
-            navbar.classList.add(
-                'bg-white/85', 
-                'backdrop-blur-xl', 
-                'border-b', 
-                'border-outline-variant',
-                'shadow-md'
-            );
-        } else {
-            // Di posisi paling atas: solid + garis hilang
-            navbar.classList.add('bg-surface');
-            navbar.classList.remove(
-                'bg-white/85', 
-                'backdrop-blur-xl', 
-                'border-b', 
-                'border-outline-variant',
-                'shadow-md'
-            );
-        }
-    });
-</script>
-</header>
+@include('layouts.navbar')
 <main class="pt-20">
 
 <!-- Hero Section -->
-<section class="relative overflow-hidden bg-surface pt-16 pb-section-gap">
-  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid md:grid-cols-2 gap-12 items-center">
+<section class="relative overflow-hidden bg-gradient-to-br from-primary via-primary/95 to-primary-container pt-32 pb-20">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-secondary-fixed/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary-container/5 rounded-full blur-3xl -ml-48 -mb-48"></div>
+  </div>
+
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid md:grid-cols-2 gap-12 items-center relative z-10">
     
     <!-- Kiri: Teks -->
-    <div class="space-y-6 z-10">
-      <div class="inline-flex items-center gap-2">
+    <div class="space-y-8 z-10">
+      <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+        <span class="w-2 h-2 bg-secondary-fixed rounded-full animate-pulse"></span>
+        <span class="text-sm font-bold text-secondary-fixed">PMII UNIVERSITAS NUSA PUTRA</span>
       </div>
 
-      <h1 class="font-headline-xl text-headline-xl text-primary max-w-xl">
-        Hai Sahabat Apakah Kalian Tau Apa Itu PMII? 
-        <span class="relative">
-          <span class="absolute bottom-1 left-0 w-full h-3 bg-secondary-container/40 -z-10"></span>
-        </span>
+      <h1 class="text-5xl lg:text-6xl font-extrabold text-white max-w-2xl leading-tight">
+        Saatnya Naik KELAS
+        <span class="bg-gradient-to-r from-secondary-fixed to-yellow-300 bg-clip-text text-transparent">Bersama PMII</span>
       </h1>
 
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
-        PMII (Pergerakan Mahasiswa Islam Indonesia) merupakan organisasi kemahasiswaan yang berlandaskan nilai-nilai keislaman, keindonesiaan, dan kemanusiaan. PMII memiliki tujuan membentuk pribadi muslim Indonesia yang bertakwa kepada Allah SWT, berbudi luhur, berilmu, cakap, serta bertanggung jawab dalam mengabdikan diri kepada agama, bangsa, dan masyarakat.
+      <p class="text-lg text-white/90 max-w-lg leading-relaxed">
+        PMII (Pergerakan Mahasiswa Islam Indonesia) merupakan organisasi kemahasiswaan yang berorientasi pada proses kaderisasi dan pengembangan kapasitas mahasiswa muslim Indonesia. Organisasi ini bertujuan membentuk pribadi yang bertakwa kepada Allah SWT, berakhlak mulia, memiliki kompetensi intelektual, serta berkarakter kritis, progresif, dan bertanggung jawab dalam mengimplementasikan nilai-nilai keislaman, kebangsaan, dan kemasyarakatan. Melalui berbagai aktivitas kaderisasi, pendidikan, PMII berupaya mencetak kader yang mampu berkontribusi secara aktif dalam pembangunan bangsa serta memberikan solusi terhadap berbagai persoalan sosial dengan berlandaskan nilai-nilai Islam Ahlussunnah wal Jamaah.
       </p>
 
-      <div class="flex flex-wrap gap-4 pt-4">
-        <button class="px-8 py-3 bg-primary text-on-primary rounded-lg font-label-sm shadow-lg hover:shadow-primary-container/20 transition-all active:scale-95">
-          Get Started
+      <div class="flex flex-wrap gap-4 pt-6">
+        <button class="group px-8 py-4 bg-secondary-fixed text-primary rounded-xl font-bold shadow-2xl hover:shadow-secondary-fixed/50 transition-all active:scale-95 flex items-center gap-2">
+          Mulai Sekarang
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
         </button>
-        <button class="px-8 py-3 border border-primary text-primary rounded-lg font-label-sm movement-button hover:bg-primary/5 transition-all">
-          Pelajari Lebih Lanjut
+        <button class="px-8 py-4 border-2 border-white text-white rounded-xl font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
+          PMII HARSHER POWER
         </button>
       </div>
     </div>
@@ -255,22 +192,39 @@
         
         <!-- Carousel wrapper -->
         <div class="relative h-[420px] md:h-[480px] overflow-hidden">
-          <!-- Slide 1 -->
-          <div class="absolute inset-0 block duration-700 ease-in-out" data-carousel-item="active">
-            <img src="poto.jpg" class="w-full h-full object-cover" alt="Diskusi dan kajian PMII">
-          </div>
-          <!-- Slide 2 -->
-          <div class="absolute inset-0 hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="logo_rayon.png" class="w-full h-full object-cover" alt="Kegiatan organisasi PMII">
-          </div>
-          <!-- Slide 3 -->
-          <div class="absolute inset-0 hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Kader PMII berdiskusi">
-          </div>
-          <!-- Slide 4 -->
-          <div class="absolute inset-0 hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Kegiatan sosial PMII">
-          </div>
+            @php
+                $homeSlides = collect([
+                    $berandaSections['home_carousel_1'] ?? null,
+                    $berandaSections['home_carousel_2'] ?? null,
+                    $berandaSections['home_carousel_3'] ?? null,
+                ])->filter(fn($item) => $item && $item->image)->values();
+            @endphp
+
+            @if ($homeSlides->isNotEmpty())
+                @foreach ($homeSlides as $idx => $slide)
+                    <div class="absolute inset-0 {{ $idx === 0 ? 'block' : 'hidden' }} duration-700 ease-in-out" data-carousel-item="{{ $idx === 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $slide->image) }}" class="w-full h-full object-cover" alt="{{ $slide->judul }}">
+                        @if ($slide->caption)
+                            <div class="absolute bottom-0 left-0 right-0 bg-black/40 p-4 text-sm text-white">
+                                {{ $slide->caption }}
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
+            @else
+                <div class="absolute inset-0 block duration-700 ease-in-out" data-carousel-item="active">
+                    <img src="poto.jpg" class="w-full h-full object-cover" alt="Diskusi dan kajian PMII">
+                </div>
+                <div class="absolute inset-0 hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="logo_rayon.png" class="w-full h-full object-cover" alt="Kegiatan organisasi PMII">
+                </div>
+                <div class="absolute inset-0 hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Kader PMII berdiskusi">
+                </div>
+                <div class="absolute inset-0 hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Kegiatan sosial PMII">
+                </div>
+            @endif
         </div>
 
         <!-- Slider indicators -->
@@ -278,7 +232,6 @@
           <button type="button" class="w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all" aria-current="true" data-carousel-slide-to="0"></button>
           <button type="button" class="w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all" data-carousel-slide-to="1"></button>
           <button type="button" class="w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all" data-carousel-slide-to="2"></button>
-          <button type="button" class="w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all" data-carousel-slide-to="3"></button>
         </div>
 
         <!-- Slider controls -->
@@ -302,103 +255,83 @@
   </div>
 </section>
 
-<!-- Activity Calendar -->
-<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
-<div class="flex items-end justify-between mb-12">
-<div>
-<h2 class="font-display-lg text-primary text-3xl md:text-4xl mb-2">Di PMII, Emangnya Kita Ngapain Aja, Sih?</h2>
-<p class="text-on-surface-variant max-w-xl"> Belajar tanpa batas, berdiskusi dengan gagasan, bergerak untuk masyarakat, dan bertumbuh bersama dalam semangat kaderisasi. Di PMII, setiap kegiatan adalah langkah menuju pribadi yang lebih berilmu, berintegritas, dan bermanfaat. 
-</p>
-
-<p class="text-on-surface-variant max-w-xl"> 
-</p>
-</div>
-<button class="text-primary font-bold flex items-center gap-2">
-                    View Calendar <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Event Card 1 -->
-<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant hover:border-primary transition-all group">
-<div class="text-primary font-bold text-lg mb-2">MAR 15, 2024</div>
-<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors">MAPABA Raya 2024</h3>
-<p class="text-on-surface-variant mb-6 font-body-md line-clamp-3">Masa Penerimaan Anggota Baru untuk mahasiswa Universitas Nusa Putra. Temukan jati dirimu dalam gerakan.</p>
-<div class="flex items-center gap-2 text-on-surface-variant text-sm">
-<span class="material-symbols-outlined text-base">location_on</span> Auditorium Utama
-                    </div>
-</div>
-<!-- Event Card 2 -->
-<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant hover:border-primary transition-all group">
-<div class="text-primary font-bold text-lg mb-2">APR 02, 2024</div>
-<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors">Kajian Intelektual</h3>
-<p class="text-on-surface-variant mb-6 font-body-md line-clamp-3">Diskusi rutin mingguan membedah isu-isu kontemporer dari perspektif Aswaja dan kemahasiswaan.</p>
-<div class="flex items-center gap-2 text-on-surface-variant text-sm">
-<span class="material-symbols-outlined text-base">schedule</span> 15:30 WIB
-                    </div>
-</div>
-<!-- Event Card 3 -->
-<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant hover:border-primary transition-all group">
-<div class="text-primary font-bold text-lg mb-2">MAY 10, 2024</div>
-<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors">Baksos Community</h3>
-<p class="text-on-surface-variant mb-6 font-body-md line-clamp-3">Aksi sosial dan pengabdian masyarakat di lingkungan sekitar kampus sebagai wujud Amal Sholeh.</p>
-<div class="flex items-center gap-2 text-on-surface-variant text-sm">
-<span class="material-symbols-outlined text-base">diversity_3</span> Desa Cibolang
-                    </div>
-</div>
-</div>
-</section>
 <!-- Structural Info (structural) -->
-<section class="bg-surface-container py-24">
-<div class="px-margin-desktop max-w-container-max mx-auto text-center mb-16">
-<h2 class="font-display-lg text-primary mb-4">pengurus rayon FTKD</h2>
-<div class="w-24 h-1 bg-secondary-container mx-auto"></div>
+<section class="bg-gradient-to-br from-surface via-white to-primary/5 py-24 relative overflow-hidden">
+<div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-secondary-fixed/5 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
 </div>
 
-<div class="px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
-<!-- Board Member 1 -->
-<div class="bg-surface p-8 rounded-2xl text-center shadow-sm hover:shadow-md transition-all">
-<div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/10">
-<img class="w-full h-full object-cover" data-alt="A professional portrait of a male student leader in a PMII blue jacket, smiling confidently with a blurred academic campus background. The lighting is soft and professional, emphasizing leadership and approachability. The style is clean and corporate modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKM2DcbonhZD6ooeH0EnakIbDxBKP8td41jIQ9E7JRAUWH3eUKiiLqe4mog2rHkxIKcmYcOcApOJyOPQ3mcEybZXLY-ZKf-Ky7CYa0nc8wfytWbXQHQ_H6pnXlXATQqB9kp6dbQdQJpa9DGq4qrSQzTfMTvQYZEUFv4S5pswigBkyRa2ZnaYNvshaA6f95qqFDDk_58Rxvth3tlv7UihQ74mbVAhaKbfedRtycUuzpITXjpJ4XXv3Urdfsq8JAAh9qMDuwwyg_Fuo"/>
+<div class="px-margin-desktop max-w-container-max mx-auto text-center mb-16 relative z-10">
+<div class="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mb-4">
+    <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+    <span class="text-sm font-bold text-primary">Pengurus</span>
 </div>
-<h4 class="font-headline-sm text-headline-sm text-primary mb-1">M. Ezra Haikal</h4>
-<p class="text-on-surface-variant font-label-md">Ketua Rayon</p>
-<div class="mt-4 flex justify-center gap-3">
-<span class="material-symbols-outlined text-primary-container">verified_user</span>
+<h2 class="font-display-lg text-primary mb-3 text-4xl md:text-5xl font-extrabold">{{ $berandaSections['home_pengurus']->judul ?? 'Pengurus Rayon FTKD' }}</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">Pemimpin visioner yang membawa gerakan menuju masa depan lebih cerah</p>
 </div>
+
+<div class="px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+    @php
+        $jabatanTampil = [
+            'Ketua Rayon',
+            'Sekretaris',
+            'Bendahara',
+            'Ketua Bidang Kaderisasi'
+        ];
+        $pengurusFilter = $pengurusRayon->filter(function($p) use ($jabatanTampil) {
+            return in_array($p->jabatan, $jabatanTampil);
+        })->sortBy(function($p) use ($jabatanTampil) {
+            return array_search($p->jabatan, $jabatanTampil);
+        });
+    @endphp
+    @forelse ($pengurusFilter as $idx => $pengurus)
+        @php
+            $bgGradients = [
+                'from-primary to-primary-container',
+                'from-primary-container to-primary',
+                'from-primary to-secondary-container',
+                'from-secondary-container to-primary'
+            ];
+            $bgGradient = $bgGradients[$idx % 4];
+        @endphp
+        <div class="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-outline-variant/30 hover:border-primary/50">
+            <div class="absolute inset-0 bg-gradient-to-br {{ $bgGradient }} opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+            
+            <div class="relative p-6 text-center">
+                <div class="relative inline-block mb-6">
+                    <div class="absolute inset-0 bg-gradient-to-br {{ $bgGradient }} rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                    <div class="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img class="w-full h-full object-cover" src="{{ $pengurus->foto_url }}" alt="{{ $pengurus->nama }}">
+                    </div>
+                </div>
+                
+                <h4 class="font-bold text-lg text-primary mb-1 group-hover:text-primary transition-colors">{{ $pengurus->nama }}</h4>
+                <p class="text-sm font-semibold text-on-surface-variant mb-1">{{ $pengurus->jabatan }}</p>
+                <p class="text-xs text-slate-500 bg-primary/5 inline-block px-3 py-1 rounded-full">{{ $pengurus->jurusan }}</p>
+                
+                <div class="mt-4 pt-4 border-t border-outline-variant/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="flex items-center justify-center gap-2 text-primary text-sm font-semibold">
+                        <span class="material-symbols-outlined text-base">person_check</span>
+                        Hubungi
+                    </div>
+                </div>
+            </div>
+        </div>
+    @empty
+        <div class="col-span-full rounded-2xl border border-dashed border-outline-variant bg-white p-8 text-center text-slate-500">
+            Belum ada data pengurus yang tersedia.
+        </div>
+    @endforelse
 </div>
-<!-- Board Member 2 -->
-<div class="bg-surface p-8 rounded-2xl text-center shadow-sm hover:shadow-md transition-all">
-<div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/10">
-<img class="w-full h-full object-cover" data-alt="A professional portrait of a female student leader wearing a stylish hijab and a PMII blue jacket, looking intelligent and determined. The background is a clean, minimalist university office. High-key lighting highlights her professional expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWN6WFh3ogECKCtp3S6TWmIpyPZAd2pCk-zxA53PZ8LV18YVD1Raz3pnEwevpoCCAUBucVt-nc_s6SQg1WDexFR5CLi5oAIb-i-f48pg18t872jqU8tNqN4oRwuBwhr65g0sUWvejdqmiLTEhvD1tjIwNKApKcY081IK5WX7p-grX-zDA3hqiDn0zq6cRD1PHQGDGZIykBlJblKo5JEN_pT_WInmpdk2QAcYWhcWc9G8w0m_G1AzoZJig86NOOU7JPDt_6QJxEoas"/>
-</div>
-<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Sehan Zaki Nurmilad</h4>
-<p class="text-on-surface-variant font-label-md">Sekretaris Umum</p>
-<div class="mt-4 flex justify-center gap-3">
-<span class="material-symbols-outlined text-primary-container">description</span>
-</div>
-</div>
-<!-- Board Member 3 -->
-<div class="bg-surface p-8 rounded-2xl text-center shadow-sm hover:shadow-md transition-all">
-<div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/10">
-<img class="w-full h-full object-cover" data-alt="A male student leader in a PMII organization jacket, holding a leather folder, posing in a modern library. He looks analytical and professional. The corporate modern aesthetic is reflected in the clean lines and neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnHMISnskGUorBrEZRgI_lZ-SM9YZY9k2ZxDFefJuQqTU9NEBWSqpxnjF3MVwN5dNXoQHhnnRgEIEtwhrU3mJEJ_UaT_xh770I7VH0ZxVxQ3Ol-EFbKK0xEnItm-AnPRLW96gYKCAGgLr5rihe7dCWCt3dIGD6No6818V2NH8kSRIg9LEgT2Ko2qWUoE0F9HQLjfWL72alVAeihQ6UZ64s03CpX1-TmKyClQlMUKAGWbxjQR83ooi7hXV_fNdWhDYDeNPV7K3MRxU"/>
-</div>
-<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Rhealita Shani</h4>
-<p class="text-on-surface-variant font-label-md">Bendahara Umum</p>
-<div class="mt-4 flex justify-center gap-3">
-<span class="material-symbols-outlined text-primary-container">payments</span>
-</div>
-</div>
-<!-- Board Member 4 -->
-<div class="bg-surface p-8 rounded-2xl text-center shadow-sm hover:shadow-md transition-all">
-<div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/10">
-<img class="w-full h-full object-cover" data-alt="A female student leader in a blue organizational jacket, standing in front of a digital screen showing organizational charts. She has a visionary gaze. The setting is bright and academic, following the PMII professional color scheme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlS477h3WC2L1M9yCNAdQrxJ4c7jk0cS5do56CW-mbp9WxdF9IToQkKvWELYbn7HbX0aL8kpd0MsPvs66VhdS4xmQUrvMgfeqP8_7W4XLLOwvZK7bYUVT67TzYaMtdOPCaaYERP6tQD7jmZHs4InQ-BqQemfUqNVrQ2FUONkiE0L5h9qzjUo6Sg6yJuWmgkN258B1Yn5liFmQzjIt4x-VR4IhuSfHzadP5ZLM4CCib4O-Jg0EbIXpgqmmatBo21Hz5co8iXOVufwU"/>
-</div>
-<h4 class="font-headline-sm text-headline-sm text-primary mb-1">M. Hafiz Putra</h4>
-<p class="text-on-surface-variant font-label-md">Wakil Ketua 1 Bid.Kaderisasi</p>
-<div class="mt-4 flex justify-center gap-3">
-<span class="material-symbols-outlined text-primary-container">groups</span>
-</div>
-</div>
+
+<div class="px-margin-desktop max-w-container-max mx-auto text-center mt-12 relative z-10">
+    <a href="/struktur pengurus" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold hover:shadow-xl transition-all active:scale-95 group">
+        <span>Pengurus Rayon FTKD Lengkap</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </a>
 </div>
 </section>
 
@@ -409,260 +342,213 @@
 </div>
 </section>
 <!-- Profile & Vision (Asymmetric Bento) -->
-<section class="py-section-gap bg-surface-container-low">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<section class="py-section-gap bg-gradient-to-b from-white via-primary/2 to-white relative overflow-hidden">
+<div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-secondary-fixed/5 rounded-full blur-3xl -mt-48"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -mb-48"></div>
+</div>
+
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10">
 <div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-primary">Profil Pergerakan</h2>
-<div class="w-20 h-1 bg-secondary-container mx-auto mt-4 rounded-full"></div>
+<div class="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mb-4">
+    <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+    <span class="text-sm font-bold text-primary">Tentang Kami</span>
 </div>
-<div class="grid md:grid-cols-3 gap-gutter">
+<h2 class="font-display-lg text-primary text-4xl md:text-5xl font-extrabold mb-3">{{ $berandaSections['home_profil']->judul ?? 'Profil Pergerakan' }}</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">Memahami jati diri, visi, misi, dan komitmen gerakan PMII</p>
+</div>
+
+<div class="grid md:grid-cols-3 gap-6">
 <!-- Main Statement -->
-<div class="md:col-span-2 bg-surface p-8 md:p-12 rounded-3xl border border-outline-variant/30 flex flex-col justify-center">
-<h3 class="font-headline-md text-headline-md text-primary mb-6">Visi Rayon FTKD Masa Khidmat 2025-2026</h3>
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                        RAYON Fakultas Teknik Komputer dan Desain sebagai ruang kaderisasi yang dinamis, inklusif, dan solutif dalam mengembangkan potensi kader secara utuh, melalui penguatan keterampilan teknis (hard skill) dan non-teknis (soft skill) yang berlandaskan nilai-nilai Aswaja serta sikap intelektual kritis.
-                    </p>
+<div class="md:col-span-2 group relative bg-gradient-to-br from-white to-primary/5 p-8 md:p-12 rounded-2xl border border-outline-variant/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-300"></div>
+    <div class="relative z-10">
+        <div class="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-lg">
+            <h3 class="font-bold text-lg text-primary">Tujuan PMII</h3>
+        </div>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed text-lg">
+            {{ $berandaSections['home_profil']->isi ?? 'Terbentuknya pribadi muslim Indonesia yang bertaqwa kepada Allah Swt, Berbudi luhur, berilmu, cakap dan bertanggungjawab.' }}
+        </p>
+    </div>
 </div>
+
 <!-- Stats/Action -->
-<div class="bg-primary p-8 rounded-3xl text-on-primary flex flex-col justify-between">
-<span class="material-symbols-outlined text-[48px] text-secondary-container" data-weight="fill">diversity_3</span>
-<div>
-<div class="text-4xl font-bold mb-2">105+</div>
-<p class="font-label-sm text-label-sm text-on-primary-container">Anggota Rayon FTKD </p>
+<div class="group relative bg-gradient-to-br from-primary to-primary-container p-8 rounded-2xl text-on-primary flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+    <div class="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-300"></div>
+    <div class="relative z-10">
+        <span class="material-symbols-outlined text-5xl text-secondary-fixed group-hover:scale-110 transition-transform duration-300">diversity_3</span>
+        <div class="mt-8">
+            <div class="text-5xl font-extrabold mb-2 group-hover:scale-110 transition-transform duration-300 origin-left">{{ $anggotaCount }}</div>
+            <p class="font-bold text-on-primary-container text-lg">Anggota Aktif</p>
+            <p class="font-label-sm text-on-primary-container/80 mt-1">Rayon FTKD PMII</p>
+        </div>
+    </div>
 </div>
+
+<!-- Mission Card -->
+<div class="group relative bg-white p-8 rounded-2xl border border-outline-variant/50 hover:border-primary/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden md:col-span-2">
+    <div class="absolute -top-12 -left-12 w-48 h-48 bg-primary/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-300"></div>
+    <div class="relative z-10 flex flex-col md:flex-row gap-6 items-start md:items-center">
+        <div class="flex-shrink-0">
+            <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary-container rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-white text-3xl">hub</span>
+            </div>
+        </div>
+        <div class="flex-1">
+            <h4 class="font-bold text-xl text-primary mb-3 group-hover:text-primary-container transition-colors">
+                Misi Rayon FTKD
+            </h4>
+            <ul class="font-body-md text-on-surface-variant space-y-2 text-sm">
+                <li class="flex items-start gap-3">
+                    <span class="text-primary font-bold mt-1">✓</span>
+                    <span>Menyediakan ruang pengembangan akademik yang mendukung kader</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="text-primary font-bold mt-1">✓</span>
+                    <span>Membangun sistem pendampingan kader secara komprehensif</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="text-primary font-bold mt-1">✓</span>
+                    <span>Menghidupkan nilai keislaman, kebangsaan, dan keilmuan</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="text-primary font-bold mt-1">✓</span>
+                    <span>Mendorong partisipasi aktif dalam pengembangan intelektual</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
+
 <!-- Goals Card -->
-<div class="bg-surface p-8 rounded-3xl border border-outline-variant/30 hover:shadow-xl transition-all group">
-<div class="w-14 h-14 bg-primary-container/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-on-primary">person_check</span>
-</div>
-<h4 class="font-headline-md text-headline-md text-primary mb-4">Tujuan PMII</h4>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                        Terbentuknya pribadi muslim Indonesia yang bertaqwa kepada Allah Swt, Berbudi luhur, berilmu, cakap dan bertanggungjawab.
-                    </p>
-</div>
-<!-- Vision Card -->
-<div class="md:col-span-2 bg-surface p-8 rounded-3xl border border-outline-variant/30 hover:shadow-xl transition-all group flex flex-col md:flex-row gap-8 items-start md:items-center">
-<div class="w-14 h-14 shrink-0 bg-primary-container/10 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-on-primary">hub</span>
-</div>
-<div>
-
-<h4 class="font-headline-md text-headline-md text-primary mb-2">
-    Misi Rayon FTKD Masa Khidmat 2025-2026
-</h4>
-
-<ul class="font-body-md text-body-md text-on-surface-variant space-y-3 list-disc pl-5">
-    <li>Menyediakan ruang pengembangan akademik yang mendukung kader dalam mengasah kemampuan, baik di bidang keilmuan, keterampilan, maupun minat-bakat.</li>
-    <li>Membangun sistem pendampingan kader secara komprehensif melalui mentoring dan coaching, baik dalam bidang akademik, minat-bakat, soft skill, maupun pengembangan karakter.</li>
-    <li>Menghidupkan nilai keislaman, kebangsaan, dan keilmuan dalam setiap kegiatan kaderisasi dengan cara yang relevan, dan mudah diterima generasi sekarang.</li>
-    <li>Mendorong kader untuk aktif berpartisipasi dalam ruang pengembangan intelektual, diskusi keilmuan, kegiatan sosial, dan pengabdian kepada masyarakat.</li>
-    <li>Mengoptimalkan media sosial dan platform digital sebagai sarana pengembangan intelektual, publikasi, serta jejaring antar kader.</li>
-</ul>
-
-</div>
+<div class="group relative bg-white p-8 rounded-2xl border border-outline-variant/50 hover:border-primary/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden md:col-span-1">
+    <div class="absolute -top-8 -right-8 w-32 h-32 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-colors"></div>
+    <div class="relative z-10">
+        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-container rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-white text-xl">target</span>
+        </div>
+        <h4 class="font-bold text-lg text-primary mb-4 group-hover:text-primary-container transition-colors">Visi Rayon FTKD Masa Khidmat 2025-2026</h4>
+        <p class="font-body-md text-on-surface-variant text-sm leading-relaxed">
+            Ruang kaderisasi dinamis dan inklusif dalam mengembangkan potensi kader secara utuh.
+        </p>
+    </div>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Administrative Archive -->
-<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
-<div class="flex flex-col md:flex-row gap-12">
-<div class="md:w-1/3">
-<h2 class="font-display-lg text-primary mb-6">Resource Archive</h2>
-<p class="text-on-surface-variant mb-8">Access essential documents, organizational bylaws, and membership forms for transparency and administrative ease.</p>
-<div class="p-6 bg-secondary-container/10 border border-secondary-container rounded-xl">
-<span class="material-symbols-outlined text-4xl text-secondary mb-4">info</span>
-<p class="text-secondary font-semibold">Latest Update: 2026 Pengurus Rayon FTKD</p>
-</div>
-</div>
-<div class="md:w-2/3 grid grid-cols-1 gap-4">
-<div class="flex items-center justify-between p-4 bg-surface border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all cursor-pointer">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-lg">description</span>
-<div>
-<h4 class="font-headline-sm text-sm font-bold">AD/ART PMII 2024</h4>
-<p class="text-xs text-on-surface-variant">PDF • 2.4 MB</p>
-</div>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant">download</span>
-</div>
-<div class="flex items-center justify-between p-4 bg-surface border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all cursor-pointer">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-lg">article</span>
-<div>
-<h4 class="font-headline-sm text-sm font-bold">Hasil Muspimnas Tulung Agung 2024</h4>
-<p class="text-xs text-on-surface-variant">PDF • 5.1 MB</p>
-</div>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant">download</span>
-</div>
-<div class="flex items-center justify-between p-4 bg-surface border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all cursor-pointer">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-lg">assignment</span>
-<div>
-<h4 class="font-headline-sm text-sm font-bold">Formulir Pendaftaran MAPABA</h4>
-<p class="text-xs text-on-surface-variant">DOCX • 1.2 MB</p>
-</div>
-</div>
-<span class="material-symbols-outlined text-on-surface-variant">download</span>
-</div>
-</div>
-</div>
-</section>
+
 <!-- Management Photos (Bento Grid Style) -->
-<section class="py-24 bg-surface-container-lowest">
-<div class="px-margin-desktop max-w-container-max mx-auto mb-12 text-center">
-<h2 class="font-display-lg text-primary">Jejak Pergerakan</h2>
-<p class="text-on-surface-variant">Mengabadikan setiap langkah perjuangan, kebersamaan, dan semangat kader dalam setiap momentum.</p>
+<section class="mt-16 md:mt-24 py-24 bg-gradient-to-b from-primary/5 to-white relative overflow-hidden">
+<div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-secondary-fixed/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -ml-48 -mb-48"></div>
 </div>
-<div class="px-margin-desktop max-w-container-max mx-auto grid grid-cols-4 grid-rows-2 gap-4 h-[600px]">
-<div class="col-span-2 row-span-2 rounded-2xl overflow-hidden relative group">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A large group of PMII students in blue jackets posing together in front of the Universitas Nusa Putra landmark. They are cheering with raised fists, showing unity and high energy. Warm golden hour lighting creates a triumphant and community-focused atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBwIrTRi0YaLQxgHieIddSXX_gHlX29L4Y_k1dxhkQc7zl_U6I_LKw_1znITI5wfVPpL5_0x40CUHP2GsFHhURoIbWJbzg-XriL1cCj3I8r-4xSunc5IkztZhIPhLmUgyuTDD_ZA7atZ-3BIeU1JDNVhRS4LCPybvA53vMVSndCLe7pAkkGSR58e8xepfmXrgKfuHQvHUojdzsP9-Wv8zY33xLF9JW_XV9Gdb-5N5J_9ub7MLuToN0iDKyDWZgdiAUm0uFJ_Znm7E"/>
-<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent text-on-primary">
-<p class="font-bold">Grand Assembly 2023</p>
+
+<div class="px-margin-desktop max-w-container-max mx-auto mb-12 text-center relative z-10">
+<div class="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mb-4">
+    <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+    <span class="text-sm font-bold text-primary">Galeri & Momen</span>
 </div>
+<h2 class="font-display-lg text-primary text-4xl md:text-5xl font-extrabold mb-3">{{ $berandaSections['home_jejak']->judul ?? 'Jejak Pergerakan' }}</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">{{ $berandaSections['home_jejak']->isi ?? 'Mengabadikan setiap langkah perjuangan, kebersamaan, dan semangat kader dalam setiap momentum.' }}</p>
 </div>
-<div class="col-span-2 rounded-2xl overflow-hidden relative group">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up shot of a student during a night-time intellectual discussion by candlelight. The focus is on their expressive face as they debate. The lighting is dramatic, high-contrast, and academic. Deep blues and warm golds dominate the palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKbCbtYzFPQPeJeFi_duTR0o9UEPrtzjmepkN2DgZvZPLtbq-0QVH8TJCtVcCPSmBFG1OHOpAeo7yfuGC-W067OJxgjEulN2aETi5RiEGzh-KxX3IuzlXjT_jodf49YsTbvy1kuDXI-ml7c_TRczayqkBXie5bmfUTRX-m3zeHKsRc6cPIjiUpaEtGGFxHtl3GzdCeeNaUh-WdcwpfR8Uf6DIRTbTwi4FxBVmKfdpCBR1fewVR9h4cZtExpwSUC9CKWD7HRHG3Zg4"/>
-<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent text-on-primary">
-<p class="font-bold">Kajian Malam Aswaja</p>
-</div>
-</div>
-<div class="rounded-2xl overflow-hidden relative group">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A group of students engaged in a charity project, distributing food boxes to local communities. The mood is humble and service-oriented. The lighting is bright morning sun, highlighting the 'Amal Sholeh' aspect of the organization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBShlZouHfpHdPR86F1Sn2mel8rkUume75WSrsDCPQWYlXCVid4U9J3aQx7NrpbXO1ZH2Fac2rqQ59IQqy_-aZwrwjYKeadIZEwOuVPTkPX0efqGoTubUYgeviUs95HYkE3B7LyPjCqxYyqrA72a2E6BrRk8w60H6GDs-RtLQcyW8DfPxAx8MYn8D0fPa-pdtvLZYVlnNP5QyMnqUg3aRSXFIdpiX2jigAAeXP-ifkE0uiin45BDlGGl6uvXrDZGl0-x2WaTo_HRSQ"/>
-<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent text-on-primary">
-<p class="font-bold">Gerakan Hijau di Desa Cibolang</p>
-</div>
-</div>
-<div class="rounded-2xl overflow-hidden relative group">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A focused student leader delivering a speech at a podium decorated with the PMII flag. The background shows a large audience. The style is journalistic and professional, using sharp focus and professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-2YBSTkHvEJBLXbFTRvYMMp4027j9GF4tYNlqR0TJ3HKeIbkMYtA1vbvcSj0lFH9xNH5ZvhXaVl1QwT-iMky2NlqufobbQlYq-WOfEOaqxwDinBYj74zxiZhHPAmrNkZpdbnyt13qV7XGZiPszhhiEAVstkoCklicJRnZfnNR2GNkEPhD9_CO33BawYpr0nj8Dnc-n0JD8j-O2AAhkJ16i_4oE-DdNoD7hdE_IPqG8pGfE_CbmdgcASCu1ZZZwZ1XDYk1iZIhxz4"/>
-<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent text-on-primary">
-<p class="font-bold">Pidato Ketua Rayon</p>
-</div>
+
+<div class="px-margin-desktop max-w-container-max mx-auto relative z-10">
+<div class="grid grid-cols-1 gap-4 md:grid-cols-4 md:grid-rows-2 auto-rows-[180px] h-auto md:h-[600px]">
+@foreach ($jejakItems->take(4) as $index => $item)
+    @php
+        $tileClass = ['md:col-span-2 md:row-span-2', 'md:col-span-2 md:row-span-1', 'md:col-span-1 md:row-span-1', 'md:col-span-1 md:row-span-1'][$index] ?? 'md:col-span-1 md:row-span-1';
+    @endphp
+    <div class="rounded-2xl overflow-hidden relative group shadow-lg hover:shadow-2xl transition-all duration-300 {{ $tileClass }} min-h-[180px]">
+        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="{{ str_starts_with($item->image, 'http') ? $item->image : asset('storage/' . $item->image) }}" alt="{{ $item->caption ?? $item->judul }}"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent group-hover:from-black/40 transition-all duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-on-primary z-10">
+            <p class="font-bold text-lg group-hover:translate-y-1 transition-transform">{{ $item->judul }}</p>
+            @if ($item->caption)
+                <p class="text-sm text-white/80 group-hover:opacity-100 opacity-0 transition-opacity">{{ $item->caption }}</p>
+            @endif
+        </div>
+    </div>
+@endforeach
 </div>
 </div>
 </section>
 <!-- Activity Results (News Style) -->
-<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
-<h2 class="font-display-lg text-primary mb-12 border-l-8 border-secondary-container pl-6">Latest Updates</h2>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-<article class="flex flex-col md:flex-row gap-6">
-<div class="md:w-1/2 h-64 rounded-xl overflow-hidden shadow-sm">
-<img class="w-full h-full object-cover" data-alt="A clean news photo of a seminar hall filled with students listening to a guest speaker. The atmosphere is academic and respectful. The PMII banner is visible in the background. High professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1c_Pst4RVzGiiuwAIOHUTd66XbZ-r2IhWEjs6kZtzAAgWUuKdYUe-H-AWykkj7KbTq7dGDGhFiJUZloXdcCoYEAmrs9XfhPAmPDYS2ZdiiZZ8oUKyrBGjwX3edGLOQQqfkNb5ERArNQS7oIqLtHLObhOYETTaRM0pVuMgdTtG7qsoGmIEUS2dvsoRCswMdqV_ObBa4PY9uBlkTvYgO-4VXDVyxIAGCZPrebY82m_hz6j9ntc2LPkciX1c4tMx1td0fz6B62s9uF8"/>
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto relative">
+<div class="mb-16">
+    <div class="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mb-4">
+        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+        <span class="text-sm font-bold text-primary">Berita Terbaru</span>
+    </div>
+    <h2 class="font-display-lg text-primary text-4xl md:text-5xl font-extrabold border-l-8 border-secondary-container pl-6">Latest Updates</h2>
 </div>
-<div class="md:w-1/2 flex flex-col justify-center">
-<span class="text-secondary font-bold text-xs uppercase tracking-widest mb-2">Success Story</span>
-<h3 class="font-headline-md text-headline-md mb-3">Seminar Literasi Digital Sukses Digelar</h3>
-<p class="text-on-surface-variant font-body-md mb-4">Menghadirkan pakar teknologi nasional, PMII Nusa Putra sukses membekali 200+ mahasiswa...</p>
-<a class="text-primary font-bold text-sm" href="#">Read Full Story →</a>
-</div>
-</article>
-<article class="flex flex-col md:flex-row gap-6">
-<div class="md:w-1/2 h-64 rounded-xl overflow-hidden shadow-sm">
-<img class="w-full h-full object-cover" data-alt="A vibrant outdoor photo of PMII members planting trees in a local village. The scene is bright and full of green plants, contrasting with the blue organizational jackets. The focus is on the action of community service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLT298vBCInucF6GHlah7aql9fIfcF34eZOWqhrjNKKO7q2Y7T-y9pOpWwAOO395Oe-Cpf71b71MfATFdFjBg_UWa2ok8GGFeUEUp-0MsE0Fs-8YLbsl7H6zlp6bkJiZZjWQKCaXCzs0vU1WC0igy-Tm7rSYM8pPFfovjbcA3WvGxlkwDU2QcqLqNWEGS94Xg9SqqqSHzDwLKW_ZvwttZYZuaLTJdffmu2eI-MQ9L-UDWB27fw6bRtNCSUGVRT-MhSa_fQdGpf1to"/>
-</div>
-<div class="md:w-1/2 flex flex-col justify-center">
-<span class="text-secondary font-bold text-xs uppercase tracking-widest mb-2">Social Action</span>
-<h3 class="font-headline-md text-headline-md mb-3">Gerakan Hijau di Desa Cibolang</h3>
-<p class="text-on-surface-variant font-body-md mb-4">Dalam rangka memperingati Harlah PMII, Komisariat Nusa Putra melakukan penanaman 1000 bibit...</p>
-<a class="text-primary font-bold text-sm" href="#">Read Full Story →</a>
-</div>
-</article>
+
+@php
+    $beritaItems = $beritaItems ?? collect();
+    $beritaCardConfigs = [
+        [
+            'pill' => 'bg-primary px-4 py-2 rounded-full',
+            'pillText' => 'text-white text-xs font-bold uppercase tracking-wider',
+            'categoryText' => 'text-xs font-bold uppercase tracking-widest text-primary',
+        ],
+        [
+            'pill' => 'bg-secondary-fixed px-4 py-2 rounded-full',
+            'pillText' => 'text-primary text-xs font-bold uppercase tracking-wider',
+            'categoryText' => 'text-xs font-bold uppercase tracking-widest text-secondary',
+        ],
+    ];
+@endphp
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    @forelse ($beritaItems->take(2) as $index => $item)
+    @php
+        $card = $beritaCardConfigs[$index] ?? $beritaCardConfigs[0];
+    @endphp
+        <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-outline-variant/50 hover:border-primary/50">
+            <div class="relative overflow-hidden h-64">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ str_starts_with($item->image, 'http') ? $item->image : asset('storage/' . $item->image) }}" alt="{{ $item->judul }}">
+                @if ($item->status_label)
+                    <div class="absolute top-4 right-4 {{ $card['pill'] }}">
+                        <span class="{{ $card['pillText'] }}">{{ $item->status_label }}</span>
+                    </div>
+                @endif
+            </div>
+            <div class="p-6">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="{{ $card['categoryText'] }}">{{ $item->kategori ?? 'Berita Terbaru' }}</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">{{ $item->judul }}</h3>
+                <p class="text-on-surface-variant font-body-md mb-4">{{ $item->isi }}</p>
+                <div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+                    <span class="text-xs text-slate-500">{{ $item->tanggal_label ?? '' }}</span>
+                    <a class="text-primary font-bold text-sm group-hover:translate-x-2 transition-transform flex items-center gap-1" href="{{ $item->link_url ?: '#' }}">
+                        Selengkapnya
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </article>
+    @empty
+        <div class="lg:col-span-2 rounded-2xl border border-dashed border-outline-variant bg-white p-8 text-center text-slate-500">
+            Belum ada berita terbaru.
+        </div>
+    @endforelse
 </div>
 </section>
 </main>
 
-<!-- Footer -->
-<footer class="bg-[#00356a] text-white mt-12">
-  <div class="max-w-container-max mx-auto px-margin-desktop py-10">
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-      <!-- Kolom 1 -->
-<div>
-  <div class="font-headline-sm text-headline-sm font-bold mb-4">PMII NUSA PUTRA</div>
-  
-  <p class="text-white/80 max-w-sm mb-2">
-    Temukan kita di ruang - ruang diskusi.
-  </p>
-  
-  <p class="text-white/80 max-w-sm mb-4">
-    Sampai jumpa dikampus
-  </p>
-  
-  <p class="font-headline-sm text-headline-sm font-bold mb-4">SALAM PERGERAKAN!!!</p>
-</div>
-
-      <!-- Kolom 2: Hubungi Kami -->
-      <div>
-        <h4 class="font-bold mb-4">Hubungi kami</h4>
-        <ul class="flex flex-col gap-2 text-white/80">
-          <li class="relative">
-            <a href="#" id="contact-btn" class="hover:text-white transition-colors">Contact</a>
-
-            <!-- Gelembung Contact -->
-            <div id="contact-bubble" 
-                 class="hidden absolute bottom-full left-0 mb-2 w-64 bg-white border border-outline-variant rounded-2xl shadow-xl p-4 z-50">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary">phone</span>
-                </div>
-                <div>
-                  <p class="text-sm text-on-surface-variant">M. Ezra Haikal</p>
-                  <p class="text-sm text-on-surface-variant">Ketua Rayon FTKD</p>
-                  <p class="font-semibold text-primary">085143527543</p>
-                </div>
-              </div>
-
-              <a href="https://wa.me/085143527543" target="_blank"
-                 class="flex items-center justify-center gap-2 w-full bg-green-500 hover:bg-green-600 text-white text-sm font-semibold py-2.5 rounded-xl transition-all">
-                <span class="material-symbols-outlined text-base">chat</span>
-                Chat via WhatsApp
-              </a>
-            </div>
-          </li>
-
-          <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
-        </ul>
-      </div>
-
-      <!-- Kolom 3: Secretariat -->
-      <div>
-        <h4 class="font-bold mb-4">Secretariat</h4>
-        <p class="text-white/80 text-sm leading-relaxed mb-4">
-          Jln. Cibolang kaler<br>
-          belakang pesantren suhu<br>
-          Cisaat, Sukabumi
-        </p>
-        <div class="flex gap-4 text-white/80">
-          <span class="material-symbols-outlined hover:text-white cursor-pointer">mail</span>
-          <span class="material-symbols-outlined hover:text-white cursor-pointer">share</span>
-          <span class="material-symbols-outlined hover:text-white cursor-pointer">public</span>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- Copyright -->
-  <div class="border-t border-white/20 py-5">
-    <div class="max-w-container-max mx-auto px-margin-desktop text-center">
-      <p class="text-sm text-white/70">Pengurus Rayon FTKD Masa Khidmat 2025-2026</p>
-    </div>
-  </div>
-</footer>
+@include('layouts.footer')
 
 <!-- ==================== LOGIN MODAL ==================== -->
 <div id="loginModal" onclick="if (event.target.id === 'loginModal') hideLoginModal()" class="fixed inset-0 hidden items-center justify-center bg-slate-900/70 p-6 z-50">
     <div class="relative w-full max-w-md rounded-[2rem] bg-white p-6 shadow-2xl">
         <button type="button" onclick="hideLoginModal()" class="absolute right-4 top-4 text-slate-500 hover:text-slate-900 text-2xl leading-none">×</button>
         <div class="p-6 pt-10">
-            <form id="loginForm">
+            <form id="loginForm" method="POST" action="{{ route('login') }}">
+                @csrf
                 <input type="hidden" id="redirectAfterLogin" value="">
 
                 <!-- Email -->
@@ -670,7 +556,7 @@
                     <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Email atau Username</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-4 top-3 text-on-surface-variant">person</span>
-                        <input type="text" id="email" required 
+                        <input type="email" id="email" name="email" required 
                                class="w-full pl-11 pr-4 py-3 border border-outline-variant rounded-xl focus:outline-none focus:border-primary text-sm bg-surface"
                                placeholder="nama@email.com">
                     </div>
@@ -681,7 +567,7 @@
             <label class="block text-sm font-medium text-on-surface-variant mb-1.5">Kata Sandi</label>
             <div class="relative">
                 <span class="material-symbols-outlined absolute left-4 top-3 text-on-surface-variant">lock</span>
-                <input type="password" id="password" required 
+                <input type="password" id="password" name="password" required 
                        class="w-full pl-11 pr-11 py-3 border border-outline-variant rounded-xl focus:outline-none focus:border-primary text-sm bg-surface"
                        placeholder="••••••••••">
                 <button type="button" onclick="togglePasswordVisibility()" 
@@ -707,8 +593,8 @@
 
     <div class="text-center mt-5">
         <p class="text-sm text-on-surface-variant">
-            Belum punya akun? 
-            <a href="#" class="text-primary font-medium hover:underline">Daftar sekarang</a>
+            Belum punya akun?
+            <a href="{{ route('register') }}" class="text-primary font-medium hover:underline">Daftar sekarang</a>
         </p>
     </div>
 </div>
@@ -766,23 +652,6 @@
         });
     </script>
 
-    <script>
-  // === Contact Bubble ===
-  const contactBtn = document.getElementById('contact-btn');
-  const contactBubble = document.getElementById('contact-bubble');
-
-  contactBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    contactBubble.classList.toggle('hidden');
-  });
-
-  // Tutup bubble jika klik di luar
-  document.addEventListener('click', function(e) {
-    if (!contactBtn.contains(e.target) && !contactBubble.contains(e.target)) {
-      contactBubble.classList.add('hidden');
-    }
-  });
-</script>
 
 <!-- ==================== LOGIN JAVASCRIPT ==================== -->
 <script>
@@ -844,13 +713,28 @@
     // Handle form submit login
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
         const email = document.getElementById('email').value.trim();
-        
-        hideLoginModal();
-        updateLoginButton(email);
-        
-        // Tampilkan notifikasi sukses
-        setTimeout(() => {
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        })
+        .then(async response => {
+            if (!response.ok) {
+                throw new Error('Login gagal');
+            }
+
+            const data = await response.json().catch(() => ({}));
+            hideLoginModal();
+            updateLoginButton(email);
+
             const toast = document.createElement('div');
             toast.className = `fixed bottom-5 right-5 bg-emerald-600 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-x-3 z-[9999] text-sm`;
             toast.innerHTML = `
@@ -858,13 +742,32 @@
                 <span>Login berhasil! Selamat datang di PMII.</span>
             `;
             document.body.appendChild(toast);
-            
+
             setTimeout(() => {
                 toast.style.transition = 'all 0.3s ease';
                 toast.style.opacity = '0';
                 setTimeout(() => toast.remove(), 300);
             }, 3000);
-        }, 500);
+
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        })
+        .catch(() => {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-5 right-5 bg-red-600 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-x-3 z-[9999] text-sm`;
+            toast.innerHTML = `
+                <span class="material-symbols-outlined">error</span>
+                <span>Email atau password salah.</span>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.transition = 'all 0.3s ease';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        });
     });
 
     // Tekan tombol ESC untuk menutup modal
